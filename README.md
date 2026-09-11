@@ -306,6 +306,24 @@ Then restart the app with `./linux.sh` (Linux) or `./mac.sh` (macOS).
 
 ---
 
+## ❤️ Acknowledgements
+
+Delphi would not exist in its current form without the work of **TechJarves** and the original **[Uncensored AI Studio](https://github.com/techjarves/Uncensored-Local-Studio)** project.
+
+The original Uncensored AI Studio demonstrated how a unified, portable local AI environment could bring **image generation, local LLMs, speech-to-text, and text-to-speech** together behind a simple interface, while handling the difficult work of local runtimes, hardware acceleration, model management, and cross-platform support.
+
+**Delphi is an independent reimplementation inspired by and built from studying that project.** The original project is preserved in this repository under `techJarvesOG` for reference and attribution, while Delphi represents my own ongoing development, changes, architectural decisions, and additions.
+
+A sincere thank-you to **TechJarves** for creating the project that provided the foundation and inspiration for this work.
+
+> **Original project:** [TechJarves — Uncensored AI Studio](https://github.com/techjarves/Uncensored-Local-Studio)
+> **Original author:** TechJarves
+> **License:** MIT
+
+Please visit and support the original project if you find Delphi useful. The work that went into Uncensored AI Studio deserves recognition.
+
+---
+
 ## <a id="licensing"></a>📝 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file. Bundles [stable-diffusion.cpp](https://github.com/leejet/stable-diffusion.cpp) (MIT License). Model weights are subject to their respective creators' licenses.
