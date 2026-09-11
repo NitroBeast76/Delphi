@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Local AI Studio - Linux/macOS Reset Script
+# Delphi - Intelligence at Home - Linux/macOS Reset Script
 # Resets portable app dependencies/builds while preserving user models and outputs.
 #
 
@@ -12,7 +12,7 @@ APP_DIR="$ROOT_DIR/app"
 
 echo ""
 echo "  ============================================================"
-echo "   Resetting Local AI Studio..."
+echo "   Resetting Delphi..."
 echo "  ============================================================"
 echo ""
 

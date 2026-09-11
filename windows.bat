@@ -1,6 +1,6 @@
 @echo off
 setlocal EnableExtensions EnableDelayedExpansion
-title Uncensored AI Studio
+title Delphi - Intelligence at Home
 cd /d "%~dp0"
 
 set APP=%~dp0app
@@ -57,13 +57,13 @@ goto :run_setup
 :run_setup
 echo.
 echo  ============================================================
-echo   UNCENSORED AI STUDIO      ^|  %SETUP_MODE%
+echo   DELPHI                    ^|  %SETUP_MODE%
 echo  ============================================================
 echo.
 if "%SETUP_MODE%"=="First-Time Setup" (
     echo  This looks like your first run. Setting up automatically...
 ) else (
-    echo  Uncensored AI Studio needs a quick repair before launch.
+    echo  Delphi needs a quick repair before launch.
 )
 if not "%SETUP_REASON%"=="" echo  Reason: %SETUP_REASON%
 echo  Models are not downloaded during setup. Download or import them in the app.
@@ -91,7 +91,7 @@ goto :launch
 :launch
 echo.
 echo  ============================================================
-echo   UNCENSORED AI STUDIO      ^|  Launching...
+echo   DELPHI                    ^|  Launching...
 echo  ============================================================
 echo.
 
@@ -106,7 +106,7 @@ for /f "tokens=5" %%a in ('netstat -aon 2^>nul ^| findstr ":8080 "') do taskkill
 for /f "tokens=5" %%a in ('netstat -aon 2^>nul ^| findstr ":%LLM_PORT% "') do taskkill /f /pid %%a >nul 2>nul
 
 :: Start frontend server + backend manager (serve.cjs manages sd-vulkan.exe)
-echo  Starting Uncensored AI Studio...
+echo  Starting Delphi...
 echo  Opening browser at http://localhost:%FRONTEND_PORT%...
 start /b cmd /c "timeout /t 2 >nul && start http://localhost:%FRONTEND_PORT%"
 

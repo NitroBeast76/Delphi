@@ -1,7 +1,7 @@
-#  Uncensored AI Studio
+# Delphi — Intelligence at Home
 
 <p align="center">
-  <strong>A premium, zero-configuration local AI studio and offline GUI for Stable Diffusion (Image Generation), LLMs (Chat), Whisper (Speech-to-Text), and Kokoro (Text-to-Speech). Powered by hardware-accelerated GPU and NPU execution on Windows, Linux, and macOS.</strong>
+  <strong>A premium, zero-configuration local intelligence studio and offline GUI for image generation, language models, speech-to-text, and natural voice. Powered by hardware-accelerated GPU and NPU execution on Windows, Linux, and macOS.</strong>
 </p>
 
 <p align="center">
@@ -10,21 +10,11 @@
   <img src="https://img.shields.io/badge/License-MIT-orange?style=for-the-badge" alt="License" />
 </p>
 
-<p align="center">
-  🎥 <strong>Watch the Setup & Demo Video:</strong> <a href="https://youtu.be/yeFvP3SWMak">https://youtu.be/yeFvP3SWMak</a>
-</p>
-
-<p align="center">
-  <a href="https://youtu.be/yeFvP3SWMak">
-    <img src="https://img.youtube.com/vi/yeFvP3SWMak/maxresdefault.jpg" alt="Uncensored AI Studio Video Tutorial" width="800" style="border-radius: 8px;" />
-  </a>
-</p>
-
 ---
 
 
 ## 📖 Table of Contents
-* [What is Uncensored AI Studio?](#what-is-uncensored-ai-studio)
+* [What is Delphi?](#what-is-delphi)
 * [Key Features](#key-features)
 * [Workspace & Engine Architecture](#workspace-architecture)
 * [Supported Models](#supported-models)
@@ -40,9 +30,9 @@
 
 ---
 
-## <a id="what-is-uncensored-ai-studio"></a>📖 What is Uncensored AI Studio?
+## <a id="what-is-delphi"></a>📖 What is Delphi?
 
-**Uncensored AI Studio** is a completely offline, zero-setup, self-contained AI studio for Windows, Linux, and macOS. Unlike cloud-based AI systems, it runs entirely on your own hardware with no censorship, tracking, subscriptions, or login requirements.
+**Delphi — Intelligence at Home** is a completely offline, zero-setup, self-contained creative intelligence studio for Windows, Linux, and macOS. Unlike cloud-based AI systems, it runs entirely on your own hardware with no tracking, subscriptions, or login requirements.
 
 It unifies four major local AI capabilities into one high-performance desktop interface:
 1. **🎨 Image Generation (Stable Diffusion):** Generate and edit high-quality images offline using `.safetensors`, `.gguf`, or `.ckpt` model weights.
@@ -117,7 +107,7 @@ Known-good image models available from the Model Manager:
 ## <a id="folder-architecture"></a>📁 Folder Architecture
 
 ```
-Uncensored-AI-Studio/
+Delphi/
 ├── windows.bat                # Windows Launcher (Double-click entrypoint)
 ├── linux.sh                   # Linux Launcher (Terminal entrypoint)
 ├── mac.sh                     # macOS Launcher (Terminal entrypoint)
@@ -305,7 +295,7 @@ cmake .. -DSD_METAL=ON -DSD_BUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE=Release
 cmake --build . --config Release -j$(getconf _NPROCESSORS_ONLN 2>/dev/null || sysctl -n hw.ncpu)
 
 # 4. Copy the binaries into this project
-cp bin/sd* /path/to/Uncensored-AI-Studio/app/backend/linux/<backend>/
+cp bin/sd* /path/to/Delphi/app/backend/linux/<backend>/
 ```
 
 After copying, rename the server binary to match what `scripts/server/serve.cjs` expects:

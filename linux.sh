@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Uncensored AI Studio - Linux Launcher
+# Delphi - Intelligence at Home - Linux Launcher
 # Double-click or run: ./linux.sh
 # Use --max-perf to enable ROCm backend downloads on Linux first setup.
 #
@@ -188,13 +188,13 @@ fi
 if [[ -n "$SETUP_REASON" ]]; then
   echo ""
   echo "  ============================================================"
-  echo "   UNCENSORED AI STUDIO      |  $PLATFORM_LABEL $SETUP_MODE"
+  echo "   DELPHI                    |  $PLATFORM_LABEL $SETUP_MODE"
   echo "  ============================================================"
   echo ""
   if [[ "$SETUP_MODE" == "First-Time Setup" ]]; then
     echo "  This looks like your first run on Linux. Setting up automatically..."
   else
-    echo "  Uncensored AI Studio needs a quick repair before launch."
+    echo "  Delphi needs a quick repair before launch."
   fi
   echo "  Reason: $SETUP_REASON"
   echo "  Models are not downloaded during setup. Download or import them in the app."
@@ -222,7 +222,7 @@ fi
 clear 2>/dev/null || true
 echo ""
 echo "  ============================================================"
-echo "   UNCENSORED AI STUDIO      |  Launching..."
+echo "   DELPHI                    |  Launching..."
 echo "  ============================================================"
 echo ""
 
@@ -241,7 +241,7 @@ elif command -v fuser >/dev/null 2>&1; then
 fi
 
 # Start the server
-echo "  Starting Uncensored AI Studio..."
+echo "  Starting Delphi..."
 export PATH="$NODE_DIR/bin:$PATH"
 export FRONTEND_PORT="$FRONTEND_PORT"
 

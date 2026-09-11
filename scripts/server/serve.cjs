@@ -1679,7 +1679,7 @@ function getPathInfo(label, targetPath, type = "file") {
 function isDirWritable(dirPath) {
   try {
     fs.mkdirSync(dirPath, { recursive: true });
-    const testFile = path.join(dirPath, `.uncensored-ai-studio-write-test-${Date.now()}.tmp`);
+    const testFile = path.join(dirPath, `.delphi-write-test-${Date.now()}.tmp`);
     fs.writeFileSync(testFile, "ok", "utf8");
     fs.unlinkSync(testFile);
     return true;
@@ -3551,7 +3551,7 @@ function requestHttpsJson(url, timeoutMs = 30000) {
     const req = https.get(url, {
       headers: {
         "Accept": "application/json",
-        "User-Agent": "Uncensored-AI-Studio/1.0",
+        "User-Agent": "Delphi/1.0",
       },
       timeout: timeoutMs,
     }, (res) => {
@@ -5009,7 +5009,7 @@ function startImageBackendDownload(backendId, redirectCount = 0, redirectUrl = "
   const client = url.startsWith("https") ? https : http;
   const request = client.get(url, {
     headers: {
-      "User-Agent": "Uncensored-AI-Studio/1.0 (+https://github.com/techjarves/Uncensored-AI-Studio)",
+      "User-Agent": "Delphi/1.0",
       "Accept": "application/zip, application/octet-stream, */*",
     },
   }, (response) => {
@@ -5209,7 +5209,7 @@ function startModelDownload(url, overrideFilename = null, targetDir = MODELS, ki
   const client = url.startsWith("https") ? https : http;
   const request = client.get(url, {
     headers: {
-      "User-Agent": "Uncensored-AI-Studio/1.0 (+https://github.com/techjarves/Uncensored-AI-Studio)",
+      "User-Agent": "Delphi/1.0",
       "Accept": "application/octet-stream, application/x-safetensors, */*",
       "Referer": "https://huggingface.co/",
     },
@@ -7256,7 +7256,7 @@ server.timeout = 0; // Disable socket timeout for large model uploads/downloads
 server.listen(PORT_FRONTEND, "0.0.0.0", () => {
   console.log("");
   console.log("  ============================================================");
-  console.log("   UNCENSORED AI STUDIO      |  Running");
+  console.log("   DELPHI                    |  Running");
   console.log("   Server Build: " + SERVER_BUILD);
   console.log("   Frontend : http://localhost:" + PORT_FRONTEND);
   console.log("   Image API: http://127.0.0.1:" + PORT_BACKEND);

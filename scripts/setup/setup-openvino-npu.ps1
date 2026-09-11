@@ -30,7 +30,7 @@ function Download-File {
   Enable-Tls12
   New-Item -ItemType Directory -Force -Path (Split-Path -Parent $Dest) | Out-Null
   $client = New-Object System.Net.WebClient
-  $client.Headers.Add("User-Agent", "Uncensored-AI-Studio-Setup")
+  $client.Headers.Add("User-Agent", "Delphi-Setup")
   $client.DownloadFile($Url, $Dest)
 }
 
@@ -98,7 +98,7 @@ function Ensure-PortablePython {
 
 Write-Host ""
 Write-Host "  ============================================================"
-Write-Host "   Uncensored AI Studio - OpenVINO NPU Setup"
+Write-Host "   Delphi - OpenVINO NPU Setup"
 Write-Host "   Portable Python runtime: app/tools/python-win"
 Write-Host "  ============================================================"
 Write-Host ""

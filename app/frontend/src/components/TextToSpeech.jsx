@@ -42,7 +42,7 @@ export default function TextToSpeech({
   const [status, setStatus] = useState({ ready: false, running: false, runtimeInstalled: false, settings: {}, voices: [] });
   const [models, setModels] = useState([]);
   const [selectedModel, setSelectedModel] = useState("");
-  const [text, setText] = useState("Hello from Local AI Studio text to speech.");
+  const [text, setText] = useState("Hello from Delphi text to speech.");
   const [isLoadingModel, setIsLoadingModel] = useState(false);
   const [isGenerating, setIsGenerating] = useState(false);
   const [output, setOutput] = useState(null);
