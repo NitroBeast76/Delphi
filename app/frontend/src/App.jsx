@@ -51,8 +51,6 @@ function App() {
 
   // Navigation
   const [activeTab, setActiveTab] = useState("overview");
-  const [logo, setLogo] = useState(() => localStorage.getItem("brand-logo") || "");
-
   useEffect(() => {
     document.title = `${BRAND.name} — ${BRAND.tagline}`;
   }, []);
@@ -709,9 +707,8 @@ function App() {
       setShowTtsHistory={setShowTtsHistory}
       onDeleteTtsOutput={handleDeleteTtsOutput}
        brand={BRAND}
-       logo={logo}
     />
-  ), [sidebarVisible, activeTab, specs, conversations, activeConversationId, showHistory, handleDeleteConversation, speechTranscriptions, selectedSpeechTranscript, showSpeechHistory, handleDeleteSpeechTranscription, ttsOutputs, selectedTtsOutput, showTtsHistory, handleDeleteTtsOutput, logo]);
+  ), [sidebarVisible, activeTab, specs, conversations, activeConversationId, showHistory, handleDeleteConversation, speechTranscriptions, selectedSpeechTranscript, showSpeechHistory, handleDeleteSpeechTranscription, ttsOutputs, selectedTtsOutput, showTtsHistory, handleDeleteTtsOutput]);
 
   const handleStopServer = useCallback(async () => {
     if (!serverRunning || isStoppingServer) return;
@@ -750,7 +747,7 @@ function App() {
         />
 
         <div style={{ display: activeTab === "overview" ? "flex" : "none", flex: 1, flexDirection: "column", overflow: "hidden" }}>
-          <Welcome setActiveTab={setActiveTab} logo={logo} setLogo={setLogo} />
+          <Welcome setActiveTab={setActiveTab} />
         </div>
 
         {/* Dynamic Workspace Container */}

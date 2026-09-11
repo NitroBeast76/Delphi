@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import { Home, Image, FolderDown, MessageSquare, Mic, Settings, Sparkles, Terminal, ChevronDown, ChevronUp, Trash2, Volume2 } from "lucide-react";
+import { Home, Image, FolderDown, MessageSquare, Mic, Settings, Terminal, ChevronDown, ChevronUp, Trash2, Volume2 } from "lucide-react";
 
 function formatSidebarDate(value) {
   const date = new Date(value);
@@ -32,8 +32,7 @@ function Sidebar({
   showTtsHistory,
   setShowTtsHistory,
   onDeleteTtsOutput,
-  brand,
-  logo
+  brand
 }) {
   return (
     <div className={`sidebar ${collapsed ? "collapsed" : ""}`}>
@@ -41,7 +40,7 @@ function Sidebar({
         {/* Sidebar Header */}
         <div className="sidebar-logo">
           <div className="sidebar-brand-mark">
-            {logo ? <img src={logo} alt="" /> : <Sparkles className="sidebar-logo-icon" />}
+            <img src={brand?.logo || "/delphi-logo.png"} alt="" />
           </div>
           <div className="sidebar-brand-copy">
             <span className="sidebar-logo-text">{brand?.name || "Delphi"}</span>

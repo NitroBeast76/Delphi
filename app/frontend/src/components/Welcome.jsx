@@ -1,24 +1,8 @@
-import React, { useRef } from "react";
-import { ArrowRight, ImagePlus, MessageSquare, Mic, Sparkles, Volume2 } from "lucide-react";
+import React from "react";
+import { ArrowRight, MessageSquare, Mic, Sparkles, Volume2 } from "lucide-react";
 import { BRAND } from "../brand";
 
-function Welcome({ setActiveTab, logo, setLogo }) {
-  const fileInputRef = useRef(null);
-
-  const handleLogoUpload = (event) => {
-    const file = event.target.files?.[0];
-    if (!file || !file.type.startsWith("image/")) return;
-
-    const reader = new FileReader();
-    reader.onload = () => {
-      const nextLogo = String(reader.result || "");
-      setLogo(nextLogo);
-      localStorage.setItem("brand-logo", nextLogo);
-    };
-    reader.readAsDataURL(file);
-    event.target.value = "";
-  };
-
+function Welcome({ setActiveTab }) {
   const launchWorkspace = (tab) => setActiveTab(tab);
 
   return (
@@ -29,7 +13,7 @@ function Welcome({ setActiveTab, logo, setLogo }) {
       <section className="welcome-hero">
         <div className="welcome-brand-lockup">
           <div className="welcome-mark">
-            {logo ? <img src={logo} alt={`${BRAND.name} logo`} /> : <Sparkles size={28} strokeWidth={1.8} />}
+            <img src={BRAND.logo} alt={`${BRAND.name} logo`} />
           </div>
           <span>Private by design</span>
         </div>
@@ -58,11 +42,6 @@ function Welcome({ setActiveTab, logo, setLogo }) {
             <span className="welcome-section-kicker">A studio for making</span>
             <h2>Ideas, kept close.</h2>
           </div>
-          <button className="welcome-logo-upload" onClick={() => fileInputRef.current?.click()}>
-            <ImagePlus size={16} />
-            {logo ? "Change logo" : "Add your logo"}
-          </button>
-          <input ref={fileInputRef} type="file" accept="image/*" onChange={handleLogoUpload} hidden />
         </div>
 
         <div className="welcome-capabilities">
