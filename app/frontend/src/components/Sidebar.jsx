@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import { Image, FolderDown, MessageSquare, Mic, Settings, Shield, Terminal, ChevronDown, ChevronUp, Trash2, Volume2 } from "lucide-react";
+import { Home, Image, FolderDown, MessageSquare, Mic, Settings, Sparkles, Terminal, ChevronDown, ChevronUp, Trash2, Volume2 } from "lucide-react";
 
 function formatSidebarDate(value) {
   const date = new Date(value);
@@ -31,19 +31,34 @@ function Sidebar({
   setSelectedTtsOutput,
   showTtsHistory,
   setShowTtsHistory,
-  onDeleteTtsOutput
+  onDeleteTtsOutput,
+  brand,
+  logo
 }) {
   return (
     <div className={`sidebar ${collapsed ? "collapsed" : ""}`}>
       <div>
         {/* Sidebar Header */}
         <div className="sidebar-logo">
-          <Shield className="sidebar-logo-icon" />
-          <span className="sidebar-logo-text">Local AI Studio</span>
+          <div className="sidebar-brand-mark">
+            {logo ? <img src={logo} alt="" /> : <Sparkles className="sidebar-logo-icon" />}
+          </div>
+          <div className="sidebar-brand-copy">
+            <span className="sidebar-logo-text">{brand?.name || "Delphi"}</span>
+            <small>{brand?.tagline || "Intelligence at Home"}</small>
+          </div>
         </div>
 
         {/* Sidebar Navigation Links (Material 3 style) */}
         <div className="nav-list">
+          <div
+            className={`nav-item ${activeTab === "overview" ? "active" : ""}`}
+            onClick={() => setActiveTab("overview")}
+          >
+            <Home size={20} />
+            <span>Welcome</span>
+          </div>
+
           <div
             className={`nav-item ${activeTab === "generator" ? "active" : ""}`}
             onClick={() => setActiveTab("generator")}

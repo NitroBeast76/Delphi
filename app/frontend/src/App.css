@@ -17,37 +17,37 @@
   --md-transition-easing: cubic-bezier(0.4, 0, 0.2, 1);
 
   /* Light Theme Variables (Default) */
-  --md-sys-color-primary: #4f46e5;
+  --md-sys-color-primary: #6d5ce7;
   --md-sys-color-on-primary: #ffffff;
-  --md-sys-color-primary-container: rgba(79, 70, 229, 0.06);
-  --md-sys-color-on-primary-container: #4338ca;
-  --md-sys-color-secondary: #0ea5e9;
+  --md-sys-color-primary-container: rgba(109, 92, 231, 0.09);
+  --md-sys-color-on-primary-container: #5545c4;
+  --md-sys-color-secondary: #2fb6a5;
   --md-sys-color-on-secondary: #ffffff;
-  --md-sys-color-secondary-container: rgba(14, 165, 233, 0.06);
-  --md-sys-color-on-secondary-container: #0369a1;
-  --md-sys-color-tertiary: #d946ef;
+  --md-sys-color-secondary-container: rgba(47, 182, 165, 0.09);
+  --md-sys-color-on-secondary-container: #13766b;
+  --md-sys-color-tertiary: #e58a61;
   --md-sys-color-on-tertiary: #ffffff;
-  --md-sys-color-background: #f8fafc;
-  --md-sys-color-on-background: #0f172a;
-  --md-sys-color-surface: rgba(255, 255, 255, 0.75);
-  --md-sys-color-on-surface: #0f172a;
-  --md-sys-color-surface-variant: rgba(241, 245, 249, 0.8);
-  --md-sys-color-on-surface-variant: #475569;
+  --md-sys-color-background: #f8f9fc;
+  --md-sys-color-on-background: #20212b;
+  --md-sys-color-surface: rgba(255, 255, 255, 0.86);
+  --md-sys-color-on-surface: #20212b;
+  --md-sys-color-surface-variant: rgba(242, 241, 248, 0.88);
+  --md-sys-color-on-surface-variant: #626273;
   
   /* Text description variables - HIGH CONTRAST for readability */
-  --md-sys-color-outline: #64748b;            /* Used for description texts in JSX */
-  --md-sys-color-outline-variant: #94a3b8;    /* Used for sub-description texts in JSX */
+  --md-sys-color-outline: #6e6d7e;            /* Used for description texts in JSX */
+  --md-sys-color-outline-variant: #a4a2b2;    /* Used for sub-description texts in JSX */
   
   /* Border variables - SOFT TRANSLUCENT borders */
-  --border-color: rgba(15, 23, 42, 0.08);
-  --border-color-muted: rgba(15, 23, 42, 0.05);
+  --border-color: rgba(38, 34, 67, 0.1);
+  --border-color-muted: rgba(38, 34, 67, 0.06);
   
   --md-sys-color-error: #ef4444;
   --md-sys-color-on-error: #ffffff;
   --md-sys-color-success: #10b981;
   --md-sys-color-on-success: #ffffff;
   --md-sys-color-card-border: rgba(15, 23, 42, 0.06);
-  --glass-shadow: 0 8px 32px 0 rgba(15, 23, 42, 0.04);
+  --glass-shadow: 0 12px 34px 0 rgba(57, 46, 105, 0.08);
   --glass-blur: blur(16px);
 }
 
@@ -432,8 +432,41 @@ body {
 .sidebar-logo {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 11px;
   padding: 0 12px 28px 12px;
+}
+
+.sidebar-brand-mark {
+  width: 32px;
+  height: 32px;
+  flex: 0 0 32px;
+  display: grid;
+  place-items: center;
+  border-radius: 11px;
+  background: linear-gradient(135deg, var(--md-sys-color-primary), var(--md-sys-color-secondary));
+  color: white;
+  box-shadow: 0 6px 16px color-mix(in srgb, var(--md-sys-color-primary) 25%, transparent);
+  overflow: hidden;
+}
+
+.sidebar-brand-mark img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sidebar-brand-copy {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.sidebar-brand-copy small {
+  color: var(--md-sys-color-outline);
+  font-size: 0.62rem;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
 }
 
 .sidebar-logo-icon {
@@ -515,6 +548,273 @@ body {
   flex-direction: column;
   background-color: transparent;
   overflow: hidden;
+}
+
+/* ─── Delphi Welcome Surface ───────────────────────────────────── */
+.welcome-page {
+  position: relative;
+  isolation: isolate;
+  flex: 1;
+  overflow: auto;
+  padding: clamp(34px, 6vw, 84px) clamp(24px, 7vw, 104px);
+  background:
+    radial-gradient(circle at 88% 4%, rgba(229, 138, 97, 0.12), transparent 26%),
+    radial-gradient(circle at 12% 22%, rgba(109, 92, 231, 0.1), transparent 32%);
+}
+
+.welcome-orbit {
+  position: absolute;
+  z-index: -1;
+  border: 1px solid color-mix(in srgb, var(--md-sys-color-primary) 14%, transparent);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.welcome-orbit-one {
+  width: 420px;
+  height: 420px;
+  top: -230px;
+  right: -110px;
+}
+
+.welcome-orbit-two {
+  width: 260px;
+  height: 260px;
+  top: -118px;
+  right: -30px;
+  border-color: color-mix(in srgb, var(--md-sys-color-secondary) 20%, transparent);
+}
+
+.welcome-hero {
+  max-width: 790px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.welcome-brand-lockup {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 38px;
+  color: var(--md-sys-color-outline);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.welcome-mark {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--md-sys-color-primary) 25%, transparent);
+  border-radius: 15px;
+  background: linear-gradient(135deg, var(--md-sys-color-primary), var(--md-sys-color-secondary));
+  color: white;
+  box-shadow: 0 9px 22px color-mix(in srgb, var(--md-sys-color-primary) 18%, transparent);
+}
+
+.welcome-mark img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.welcome-eyebrow,
+.welcome-section-kicker {
+  color: var(--md-sys-color-primary);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.welcome-hero h1 {
+  margin-top: 14px;
+  color: var(--md-sys-color-on-background);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(3.7rem, 9vw, 7rem);
+  font-weight: 400;
+  letter-spacing: -0.07em;
+  line-height: 0.95;
+}
+
+.welcome-hero h1 em {
+  color: var(--md-sys-color-primary);
+  font-style: italic;
+}
+
+.welcome-tagline {
+  margin-top: 20px;
+  color: var(--md-sys-color-on-background);
+  font-size: clamp(1.05rem, 2vw, 1.4rem);
+  font-weight: 650;
+  letter-spacing: -0.02em;
+}
+
+.welcome-description {
+  max-width: 470px;
+  margin: 10px auto 0;
+  color: var(--md-sys-color-on-surface-variant);
+  font-size: 0.98rem;
+  line-height: 1.65;
+}
+
+.welcome-actions {
+  display: flex;
+  justify-content: center;
+  gap: 11px;
+  margin-top: 28px;
+}
+
+.welcome-primary-action {
+  min-width: 166px;
+}
+
+.welcome-panel {
+  max-width: 960px;
+  margin: clamp(52px, 8vw, 104px) auto 0;
+  padding: clamp(20px, 3vw, 30px);
+  border: 1px solid var(--border-color);
+  border-radius: 26px;
+  background: color-mix(in srgb, var(--md-sys-color-surface) 82%, transparent);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(18px);
+}
+
+.welcome-panel-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.welcome-panel h2 {
+  margin-top: 7px;
+  color: var(--md-sys-color-on-surface);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.7rem, 3vw, 2.25rem);
+  font-weight: 400;
+  letter-spacing: -0.04em;
+}
+
+.welcome-logo-upload {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--md-shape-corner-full);
+  background: var(--md-sys-color-surface-variant);
+  color: var(--md-sys-color-on-surface-variant);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 650;
+  transition: all 0.2s ease;
+}
+
+.welcome-logo-upload:hover {
+  border-color: var(--md-sys-color-primary);
+  color: var(--md-sys-color-primary);
+  transform: translateY(-1px);
+}
+
+.welcome-capabilities {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 26px;
+}
+
+.welcome-capability-card {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 11px;
+  min-height: 88px;
+  padding: 13px;
+  border: 1px solid transparent;
+  border-radius: 17px;
+  background: var(--md-sys-color-surface-variant);
+  color: var(--md-sys-color-on-surface);
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+  transition: all 0.2s ease;
+}
+
+.welcome-capability-card:hover {
+  border-color: color-mix(in srgb, var(--md-sys-color-primary) 34%, transparent);
+  background: var(--md-sys-color-surface);
+  box-shadow: 0 8px 20px color-mix(in srgb, var(--md-sys-color-primary) 9%, transparent);
+  transform: translateY(-2px);
+}
+
+.welcome-capability-card > span:nth-child(2) {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.welcome-capability-card strong {
+  font-size: 0.88rem;
+}
+
+.welcome-capability-card small {
+  color: var(--md-sys-color-on-surface-variant);
+  font-size: 0.72rem;
+  line-height: 1.35;
+}
+
+.welcome-capability-card > svg {
+  color: var(--md-sys-color-outline);
+}
+
+.welcome-capability-icon {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+}
+
+.image-icon { background: rgba(109, 92, 231, 0.12); color: #6d5ce7; }
+.chat-icon { background: rgba(47, 182, 165, 0.13); color: #178e80; }
+.voice-icon { background: rgba(229, 138, 97, 0.14); color: #c46d45; }
+.sound-icon { background: rgba(235, 178, 73, 0.16); color: #ae7a13; }
+
+@media (max-width: 850px) {
+  .welcome-capabilities {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .welcome-page {
+    padding: 28px 18px 42px;
+  }
+
+  .welcome-hero h1 {
+    font-size: clamp(3.2rem, 18vw, 5.2rem);
+  }
+
+  .welcome-actions,
+  .welcome-panel-header {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .welcome-actions .m3-btn {
+    justify-content: center;
+  }
+
+  .welcome-capabilities {
+    grid-template-columns: 1fr;
+  }
 }
 
 .text-chat-layout {

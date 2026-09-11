@@ -7,6 +7,8 @@ import Settings from "./components/Settings";
 import TextChat from "./components/TextChat";
 import SpeechTranscriber from "./components/SpeechTranscriber";
 import TextToSpeech from "./components/TextToSpeech";
+import Welcome from "./components/Welcome";
+import { BRAND } from "./brand";
 import { cleanupCandidates, formatBytes, getCleanupCandidates, getDiagnostics, getHardwareSpecs, getHealth, getTelemetry, getBackendOptions, getBackendStatus, listGeneratedOutputs, listLlmConversations, saveLlmConversation, deleteLlmConversation, listSpeechTranscriptions, deleteSpeechTranscription, listTtsOutputs, deleteTtsOutput, stopServer } from "./services/api";
 import "./App.css";
 
@@ -39,7 +41,7 @@ function App() {
   const [theme, setTheme] = useState(() => {
     const saved = localStorage.getItem("theme");
     if (saved) return saved;
-    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    return "light";
   });
 
   useEffect(() => {
@@ -48,7 +50,12 @@ function App() {
   }, [theme]);
 
   // Navigation
-  const [activeTab, setActiveTab] = useState("generator");
+  const [activeTab, setActiveTab] = useState("overview");
+  const [logo, setLogo] = useState(() => localStorage.getItem("brand-logo") || "");
+
+  useEffect(() => {
+    document.title = `${BRAND.name} — ${BRAND.tagline}`;
+  }, []);
 
   // Prompts
   const [prompt, setPrompt] = useState("");
@@ -701,8 +708,10 @@ function App() {
       showTtsHistory={showTtsHistory}
       setShowTtsHistory={setShowTtsHistory}
       onDeleteTtsOutput={handleDeleteTtsOutput}
+       brand={BRAND}
+       logo={logo}
     />
-  ), [sidebarVisible, activeTab, specs, conversations, activeConversationId, showHistory, handleDeleteConversation, speechTranscriptions, selectedSpeechTranscript, showSpeechHistory, handleDeleteSpeechTranscription, ttsOutputs, selectedTtsOutput, showTtsHistory, handleDeleteTtsOutput]);
+  ), [sidebarVisible, activeTab, specs, conversations, activeConversationId, showHistory, handleDeleteConversation, speechTranscriptions, selectedSpeechTranscript, showSpeechHistory, handleDeleteSpeechTranscription, ttsOutputs, selectedTtsOutput, showTtsHistory, handleDeleteTtsOutput, logo]);
 
   const handleStopServer = useCallback(async () => {
     if (!serverRunning || isStoppingServer) return;
@@ -739,6 +748,10 @@ function App() {
           sidebarVisible={sidebarVisible}
           onToggleSidebar={() => setSidebarVisible(!sidebarVisible)}
         />
+
+        <div style={{ display: activeTab === "overview" ? "flex" : "none", flex: 1, flexDirection: "column", overflow: "hidden" }}>
+          <Welcome setActiveTab={setActiveTab} logo={logo} setLogo={setLogo} />
+        </div>
 
         {/* Dynamic Workspace Container */}
         <div style={{ display: activeTab === "generator" ? "flex" : "none", flex: 1, flexDirection: "column", overflow: "hidden" }}>
