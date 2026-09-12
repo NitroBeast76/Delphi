@@ -14,18 +14,22 @@
 
 
 ## 📖 Table of Contents
+
 * [What is Delphi?](#what-is-delphi)
 * [Key Features](#key-features)
 * [Workspace & Engine Architecture](#workspace-architecture)
 * [Supported Models](#supported-models)
 * [Folder Architecture](#folder-architecture)
 * [Getting Started](#getting-started)
+
   * [Windows Setup](#windows-setup)
   * [Linux Setup](#linux-setup)
   * [macOS Setup](#macos-setup)
+* [📚 Tutorials](#tutorials)
 * [Hardware Compatibility & Acceleration](#hardware-compatibility-acceleration)
 * [Troubleshooting & FAQ](#troubleshooting-faq)
 * [Building From Source](#building-from-source)
+* [Acknowledgements](#acknowledgements)
 * [Licensing](#licensing)
 
 ---
@@ -166,6 +170,409 @@ Ensure you have a modern web browser installed. Follow the quick guide below for
    > The prebuilt macOS backend is optimized for **Apple Silicon (M1 or newer)** and uses **Metal** GPU acceleration. *(macOS Intel hardware is completely unsupported)*.
 3. **Add Models:** Drop your weights into `app/models/` or download them via the **Model Manager** tab.
 4. **Generate:** Open `http://localhost:1420` in your browser.
+
+---
+## <a id="tutorials"></a>📚 Tutorials
+
+This section provides step-by-step guides for getting the most out of Delphi. Whether you are launching Delphi for the first time or setting up a new local model, these tutorials walk through the process from start to finish.
+
+### 🎯 Tutorial 1 — Your First Launch
+
+The first launch is designed to require as little configuration as possible.
+
+**Windows**
+
+1. Download or clone the Delphi repository.
+
+2. Open the Delphi folder.
+
+3. Double-click `windows.bat`.
+
+4. Allow the launcher to complete its first-time setup.
+
+5. Once the local server starts, open:
+
+   `http://localhost:1420`
+
+6. Delphi will detect the available hardware and configure the appropriate backend when supported.
+
+On subsequent launches, simply run `windows.bat` again.
+
+**Linux**
+
+1. Open a terminal inside the Delphi directory.
+
+2. Make the launcher executable:
+
+   ```bash
+   chmod +x linux.sh
+   ```
+
+3. Start Delphi:
+
+   ```bash
+   ./linux.sh
+   ```
+
+4. Open:
+
+   `http://localhost:1420`
+
+**macOS**
+
+1. Open a terminal inside the Delphi directory.
+
+2. Make the launcher executable:
+
+   ```bash
+   chmod +x mac.sh
+   ```
+
+3. Start Delphi:
+
+   ```bash
+   ./mac.sh
+   ```
+
+4. Open:
+
+   `http://localhost:1420`
+
+---
+
+### 🖼️ Tutorial 2 — Generate Your First Image
+
+Delphi can run Stable Diffusion models locally through its image-generation workspace.
+
+#### Step 1 — Add a model
+
+Place a supported image model inside:
+
+```text
+app/models/
+```
+
+Supported formats include:
+
+```text
+.safetensors
+.ckpt
+.gguf
+```
+
+Alternatively, use Delphi's **Model Manager** to download a supported model directly.
+
+#### Step 2 — Open Image Generation
+
+Select the **Image Generation** workspace from the Delphi interface.
+
+Your available models should appear in the model selector.
+
+#### Step 3 — Choose a model
+
+For a first test, a smaller SD 1.5 model is recommended because it requires less memory than SDXL.
+
+For higher-quality photorealistic images, an SDXL model such as **Juggernaut XL v9 Lightning** can be used on suitable hardware.
+
+#### Step 4 — Write a prompt
+
+Enter a description of the image you want to generate.
+
+For example:
+
+```text
+A futuristic city at night, rain-covered streets,
+neon lights reflecting on the pavement, cinematic
+lighting, highly detailed
+```
+
+#### Step 5 — Generate
+
+Start the generation process and wait for the local backend to finish.
+
+The generated image will be displayed in Delphi and saved to the local output directory.
+
+---
+
+### 💬 Tutorial 3 — Chat With a Local AI
+
+Delphi's Text Chat workspace uses `llama.cpp` to run compatible GGUF language models locally.
+
+#### Step 1 — Add a GGUF model
+
+Place your model inside:
+
+```text
+app/llm-models/
+```
+
+The model should be a compatible `.gguf` chat or instruction model.
+
+#### Step 2 — Open Text Chat
+
+Switch to the **Text Chat** workspace.
+
+#### Step 3 — Select your model
+
+Choose the GGUF model from the model selector.
+
+If no model is installed, Delphi may provide a starter model through the Text Chat interface.
+
+#### Step 4 — Start chatting
+
+Enter a message and send it.
+
+Your conversation is processed locally by the bundled `llama.cpp` backend.
+
+No external AI API is required.
+
+---
+
+### 🎙️ Tutorial 4 — Speech-to-Text
+
+Delphi can use `whisper.cpp` to convert speech into text locally.
+
+#### Step 1 — Install a Whisper model
+
+Place a compatible Whisper model inside:
+
+```text
+app/speech-models/
+```
+
+#### Step 2 — Open the Speech interface
+
+Select the speech or transcription functionality within Delphi.
+
+#### Step 3 — Provide audio
+
+Give Delphi a supported voice recording or audio input.
+
+#### Step 4 — Transcribe
+
+Delphi passes the audio to the local Whisper worker, which converts the speech into text.
+
+The resulting transcription can then be used elsewhere inside the application.
+
+---
+
+### 🗣️ Tutorial 5 — Generate Natural Voice Audio
+
+Delphi uses **Kokoro TTS** for local text-to-speech generation.
+
+#### Step 1 — Configure Kokoro
+
+Use Delphi's setup or Model Manager functionality to install the required Kokoro assets.
+
+The relevant files are stored under:
+
+```text
+app/tts-models/
+app/tts-runtime/
+```
+
+#### Step 2 — Enter text
+
+Provide the text you want Delphi to speak.
+
+#### Step 3 — Choose a voice
+
+Select an available Kokoro voice.
+
+#### Step 4 — Generate
+
+Start the TTS process.
+
+The Kokoro runtime generates the audio locally without requiring a cloud voice service.
+
+---
+
+### 📦 Tutorial 6 — Installing Models Through Model Manager
+
+The **Model Manager** provides a central way to manage supported local models.
+
+Depending on the model type, you can either download a model through the manager or import an existing model from your computer.
+
+For image models, supported files can be placed in:
+
+```text
+app/models/
+```
+
+For LLMs:
+
+```text
+app/llm-models/
+```
+
+For Whisper:
+
+```text
+app/speech-models/
+```
+
+For Kokoro:
+
+```text
+app/tts-models/
+app/tts-runtime/
+```
+
+After installing a model, restart or refresh the relevant workspace if the model does not immediately appear.
+
+---
+
+### 📊 Tutorial 7 — Monitoring Performance
+
+Delphi includes a live performance monitor for observing local inference.
+
+The monitor can display information such as:
+
+* CPU utilization
+* RAM usage
+* GPU utilization
+* VRAM usage
+
+This is particularly useful when testing different models or determining whether a model is too demanding for your hardware.
+
+If generation is extremely slow or the backend repeatedly crashes, check the available RAM and VRAM before assuming that the model itself is broken.
+
+---
+
+### 🔧 Tutorial 8 — Choosing the Right Backend
+
+Delphi can use different acceleration technologies depending on your hardware.
+
+**NVIDIA**
+
+```text
+CUDA
+```
+
+**AMD**
+
+```text
+ROCm / Vulkan
+```
+
+**Intel**
+
+```text
+Vulkan / OpenVINO
+```
+
+**Apple Silicon**
+
+```text
+Metal
+```
+
+If dedicated GPU acceleration is unavailable, Delphi can fall back to CPU execution. CPU inference is generally considerably slower, particularly with larger models.
+
+For Linux users, additional backend setup options are available through `linux.sh`.
+
+---
+
+### 💾 Tutorial 9 — Keeping Delphi Portable
+
+Delphi is designed to keep its runtime and AI resources together rather than requiring a traditional system-wide installation.
+
+A Delphi installation can contain its application, runtime components, models, and generated outputs together:
+
+```text
+Delphi/
+├── windows.bat
+├── linux.sh
+├── mac.sh
+├── app/
+│   ├── models/
+│   ├── llm-models/
+│   ├── speech-models/
+│   ├── tts-models/
+│   └── outputs/
+└── scripts/
+```
+
+This makes it possible to keep Delphi on an external SSD or other portable storage and move the installation between compatible machines.
+
+Hardware-specific acceleration requirements still apply.
+
+---
+
+### 🧹 Tutorial 10 — Resetting Delphi
+
+If an installation becomes corrupted or a backend fails during setup, Delphi includes reset scripts.
+
+**Windows**
+
+```powershell
+scripts/reset/reset.ps1
+```
+
+**Linux/macOS**
+
+```bash
+scripts/reset/reset.sh
+```
+
+The reset process removes temporary dependencies and compilation/package caches while preserving model weights and generated output images.
+
+After resetting, launch Delphi normally and allow the required components to be configured again.
+
+---
+
+### 🛠️ Tutorial 11 — When Something Goes Wrong
+
+If Delphi reports that a backend has crashed or stopped responding, do not immediately reinstall everything.
+
+First, check the terminal from which Delphi was launched.
+
+Look for errors involving:
+
+```text
+CUDA
+Vulkan
+ROCm
+OpenVINO
+Metal
+glibc
+DLLs
+out of memory
+```
+
+The terminal usually contains the most useful information for identifying what went wrong.
+
+You can also consult the **Troubleshooting & FAQ** section of this README for known problems and their solutions.
+
+---
+
+### 🚀 Recommended First-Time Path
+
+If you are completely new to Delphi, the recommended order is:
+
+```text
+1. Launch Delphi
+       ↓
+2. Check hardware detection
+       ↓
+3. Install a small image model
+       ↓
+4. Generate your first image
+       ↓
+5. Install a GGUF language model
+       ↓
+6. Try local Text Chat
+       ↓
+7. Configure Whisper
+       ↓
+8. Configure Kokoro TTS
+       ↓
+9. Explore Model Manager
+       ↓
+10. Experiment with different models and backends
+```
+
+Once you are comfortable with the basic workflow, explore the **Hardware Compatibility**, **Building From Source**, and **Troubleshooting** sections for more advanced configuration.
 
 ---
 
